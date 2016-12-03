@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Brill on 2016/12/3.
  */
-public interface IFood {
+public interface IFoodDao {
 
     void add(Food food);
 

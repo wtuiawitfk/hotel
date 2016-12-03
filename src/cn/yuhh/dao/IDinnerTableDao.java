@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Brill on 2016/12/3.
  */
-public interface IDinnerTable {
+public interface IDinnerTableDao {
 
     void add(DinnerTable dinnerTable);
 
