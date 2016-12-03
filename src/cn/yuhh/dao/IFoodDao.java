@@ -19,7 +19,7 @@ public interface IFoodDao {
 
     Food findById(int id);
 
-    List<Food> query(String keyword);
+    Food query(String keyword);
 
     List<Food> findByType(int type);
 

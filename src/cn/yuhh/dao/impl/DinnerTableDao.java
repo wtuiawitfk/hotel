@@ -2,6 +2,7 @@ package cn.yuhh.dao.impl;
 
 import cn.yuhh.dao.IDinnerTableDao;
 import cn.yuhh.entity.DinnerTable;
+import cn.yuhh.utils.JdbcUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by Brill on 2016/12/3.
  */
 public class DinnerTableDao implements IDinnerTableDao {
-    private QueryRunner queryRunner = new QueryRunner();
+    private QueryRunner queryRunner = JdbcUtils.getQuerrRunner();
 
     @Override
     public void add(DinnerTable dinnerTable) {

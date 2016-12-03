@@ -2,7 +2,9 @@ package cn.yuhh.dao.impl;
 
 import cn.yuhh.dao.IFoodDao;
 import cn.yuhh.entity.Food;
+import cn.yuhh.utils.JdbcUtils;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class FoodDao implements IFoodDao {
 
-    private QueryRunner qr = new QueryRunner();
+    private QueryRunner qr = JdbcUtils.getQuerrRunner();
 
     @Override
     public void add(Food food) {
@@ -59,16 +61,31 @@ public class FoodDao implements IFoodDao {
 
     @Override
     public Food findById(int id) {
-        return null;
+        String sql = "select * from food where id=?";
+        try {
+            return qr.query(sql, new BeanHandler<Food>(Food.class),id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Food> query(String keyword) {
-        return null;
+    public Food query(String keyword) {
+        String sql = "select * from food where foodName like ?";
+        try {
+            return qr.query(sql, new BeanHandler<Food>(Food.class), "%" + keyword + "%");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<Food> findByType(int type) {
-        return null;
+        String sql = "select * from food where foodType_id=?";
+        try {
+            return qr.query(sql, new BeanListHandler<Food>(Food.class), type);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
