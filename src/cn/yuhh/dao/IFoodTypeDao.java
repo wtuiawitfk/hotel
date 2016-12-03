@@ -13,7 +13,7 @@ public interface IFoodTypeDao {
 
     void delete(int id);
 
-    void updata(int id);
+    void updata(FoodType ft);
 
     List<FoodType> query();
 

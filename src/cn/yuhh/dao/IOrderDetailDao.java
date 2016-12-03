@@ -1,5 +1,6 @@
 package cn.yuhh.dao;
 
+import cn.yuhh.entity.OrderDetail;
 import cn.yuhh.entity.Orders;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface IOrderDetailDao {
 
     void delete(int id);
 
-    void updata(int id);
+    void updata(OrderDetail orderDetail);
 
     List<Orders> query();
 
